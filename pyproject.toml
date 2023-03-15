@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "python-base"
+version = "0.1.0"
+description = "A starter Python project so I can get running faster."
+authors = ["Ryan Slama <ryanmslama@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "python_base"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.1.1"
+ruff = "^0.0.256"
+black = "^23.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
