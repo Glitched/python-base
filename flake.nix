@@ -1,39 +1,35 @@
 {
-  description = "A starter Python project so I can get running faster.";
+  description = "Application packaged using poetry2nix";
 
-  # Flake inputs
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs"; # also valid: "nixpkgs"
+  inputs.flake-utils.url = "github:numtide/flake-utils";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs.poetry2nix = {
+    url = "github:nix-community/poetry2nix";
+    inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  # Flake outputs
-  outputs = { self, nixpkgs }:
-    let
-      allSystems = [
-        "x86_64-linux" # 64-bit Intel/AMD Linux
-        "aarch64-linux" # 64-bit ARM Linux
-        "x86_64-darwin" # 64-bit Intel macOS
-        "aarch64-darwin" # 64-bit ARM macOS
-      ];
-
-      # Helper to provide system-specific attributes
-      forAllSystems = f: nixpkgs.lib.genAttrs allSystems (system: f {
-        pkgs = import nixpkgs { inherit system; };
-      });
-    in
-    {
-      devShells = forAllSystems ({ pkgs }: {
-        default =
-          let
-            python = pkgs.python311;
-          in
-          pkgs.mkShell {
-            packages = [
-              (python.withPackages (ps: with ps; [
-              ]))
-              pkgs.poetry
-            ];
+  outputs = { self, nixpkgs, flake-utils, poetry2nix }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        # see https://github.com/nix-community/poetry2nix/tree/master#api for more functions and examples.
+        inherit (poetry2nix.legacyPackages.${system}) mkPoetryApplication;
+        pkgs = nixpkgs.legacyPackages.${system};
+        python = pkgs.python311;
+      in
+      {
+        packages = {
+          myapp = mkPoetryApplication {
+            projectDir = self;
+            python = python;
           };
+          default = self.packages.${system}.myapp;
+        };
+
+        devShells.default = pkgs.mkShell {
+          packages = [
+            poetry2nix.packages.${system}.poetry
+            python
+          ];
+        };
       });
-    };
 }
