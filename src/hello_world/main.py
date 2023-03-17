@@ -1,4 +1,5 @@
 def hello_world() -> str:
+    """Return a fun message."""
     return "Hello, World!"
 
 
