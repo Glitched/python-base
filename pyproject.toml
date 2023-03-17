@@ -33,16 +33,17 @@ show_missing = true
 
 [tool.ruff]
 select = [
-    "C",
-    # Docstrings
-    "D",
     # Pycodestyle
     "E",
     "W",
-    # Pyflakes
-    "F",
-    # isort
-    "I001",
+    # flake-bugbear
+    "B",
+    "B9",
+    "D",  # Docstrings
+    "F",  # Pyflakes
+    "I",  # isort
+    "S",  # flake-bandit security rules
+    "N",  # PEP 8 naming
 ]
 ignore = [
     # Missing docstring in public module
@@ -53,6 +54,8 @@ ignore = [
     "D203",
     # multi-line-summary-first-line (incompatible with multi-line-summary-second-line)
     "D212",
+    # Allow asserts
+    "S101",
 ]
 
 
