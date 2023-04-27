@@ -8,9 +8,9 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+pyright = "^1.1.305"
 
 [tool.poetry.group.dev.dependencies]
-mypy = "^1.1.1"
 ruff = "^0.0.256"
 black = "^23.1.0"
 pytest = "^7.2.2"
@@ -58,20 +58,7 @@ ignore = [
     "S101",
 ]
 
-
-[tool.mypy]
-warn_unused_configs = true
-warn_redundant_casts = true
-show_error_codes = true
-show_column_numbers = true
-check_untyped_defs = true
-disallow_any_generics = true
-disallow_subclassing_any = true
-disallow_untyped_calls = true
-disallow_untyped_defs = true
-disallow_incomplete_defs = true
-disallow_untyped_decorators = true
-no_implicit_optional = true
-warn_return_any = true
-implicit_reexport = false
-strict_equality = true
+[tool.pyright]
+include = ["src"]
+exclude = ["**/__pycache__"]
+typeCheckingMode = "strict"

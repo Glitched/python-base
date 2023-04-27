@@ -1,3 +1,5 @@
 {
-    "nixEnvSelector.nixFile": "${workspaceRoot}/flake.nix"
+    "nixEnvSelector.nixFile": "${workspaceRoot}/flake.nix",
+    "python.languageServer": "Pylance",
+    "python.analysis.typeCheckingMode": "strict"
 }
