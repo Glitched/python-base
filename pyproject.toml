@@ -11,8 +11,7 @@ python = "^3.11"
 pyright = "^1.1.305"
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.0.256"
-black = "^23.1.0"
+ruff = "^0.1.6"
 pytest = "^7.2.2"
 coverage = { extras = ["toml"], version = "^7.2.2" }
 pytest-cov = "^4.0.0"

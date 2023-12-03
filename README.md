@@ -3,9 +3,6 @@ As I come up to speed on the modern Python ecosystem, I thought I could save tim
 
 This project uses some projects that may not be ready for production use. I wanted to evaluate and learn new techologies as a part of creating this. The most new to me is [Nix](https://nixos.org/) and [poetry](https://python-poetry.org/) via [poetry2nix](https://github.com/nix-community/poetry2nix), which I'm using for reproducable builds and deterministic development environments. This project uses the experimental Nix feature, flakes.
 
-Pyright (in VSCode as Pylance) is also fairly new to me. It's proven itself to be dramatically better than mypy, and I can't imagine ever going back to not having type-inference.
+For types, this project uses [Pyright](https://github.com/microsoft/pyright) (in VSCode as Pylance). It's fairly new to me, but I enjoy working with it significantly more than mypy. Pyrite supports type inference, which means I spend less time doing trivial work specifically for the type-checker to understand what's going on. I have it configured to be very strict, which isn't always compatible with some dependenceis I've used. I use type-ignores liberally when library types are inadequate.
 
-Other tools included:
- - [pyright](https://github.com/microsoft/pyright) for type-checking
- - [ruff](https://github.com/charliermarsh/ruff) for linting
- - [black](https://github.com/psf/black) for formatting
+This project uses [ruff](https://github.com/charliermarsh/ruff) for formatting and linting, again with a fairly strict setup. Ruff replaces many separate tools I'd otherwise depend on and is generally an order of magnitude or two faster. Some of these tools include isort, black, pydocstyle, and auto flake.
