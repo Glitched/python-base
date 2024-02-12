@@ -1,5 +1,10 @@
 {
     "nixEnvSelector.nixFile": "${workspaceRoot}/flake.nix",
     "python.languageServer": "Pylance",
-    "python.analysis.typeCheckingMode": "strict"
+    "python.analysis.typeCheckingMode": "strict",
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }
