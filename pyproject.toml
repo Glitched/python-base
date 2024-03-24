@@ -1,18 +1,19 @@
 [tool.poetry]
 name = "python-base"
-version = "0.1.1"
+version = "0.1.2"
 description = "A starter Python project so I can get running faster."
 authors = ["Ryan Slama <ryanmslama@gmail.com>"]
 license = "MIT"
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.12"
-pyright = "^1.1.350"
+pyright = "^1.1.355"
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.2.1"
-pytest = "^8.0.0"
+ruff = "^0.3.0"
+pytest = "^8.1.1"
 coverage = { extras = ["toml"], version = "^7.4.1" }
 pytest-cov = "^4.1.0"
 
@@ -30,7 +31,7 @@ source = ["hello_world"]
 [tool.coverage.report]
 show_missing = true
 
-[tool.ruff]
+[tool.ruff.lint]
 select = [
     # Pycodestyle
     "E",
